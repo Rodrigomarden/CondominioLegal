@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Condominio Legal</string>
+
+    <string name="item_sair">Sair</string>
+    <string name="item_configuracoes">Configurações</string>
+    <string name="salvar">Salvar</string>
+</resources>

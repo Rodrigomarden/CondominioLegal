@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "832600612639",
+    "firebase_url": "https://condominiolegal-27ca4.firebaseio.com",
+    "project_id": "condominiolegal-27ca4",
+    "storage_bucket": "condominiolegal-27ca4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832600612639:android:a2097c83245d742c",
+        "android_client_info": {
+          "package_name": "br.com.condominiolegal.condominiolegal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832600612639-r57vd2t4scq59fbbos7pik7qdnihtf23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.condominiolegal.condominiolegal",
+            "certificate_hash": "235592cf7503165c77cc555d73983272d0fc88a7"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARsEEKqIcgKovyw3Hpq5K2jMTP-20TMps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832600612639-fis96a7bhrbthnft0jj1lsf78no9vcct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
