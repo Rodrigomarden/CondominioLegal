@@ -1,5 +1,7 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
@@ -10,12 +12,11 @@ public class Carro {
     private String marca;
     private String nomeDono;
     private String cpf;
-    private String idApartamento;
-    private String numeroBlocoApartamento;
 
     public Carro() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -62,21 +63,5 @@ public class Carro {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getIdApartamento() {
-        return idApartamento;
-    }
-
-    public void setIdApartamento(String idApartamento) {
-        this.idApartamento = idApartamento;
-    }
-
-    public String getNumeroBlocoApartamento() {
-        return numeroBlocoApartamento;
-    }
-
-    public void setNumeroBlocoApartamento(String numeroBlocoApartamento) {
-        this.numeroBlocoApartamento = numeroBlocoApartamento;
     }
 }

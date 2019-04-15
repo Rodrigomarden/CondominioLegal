@@ -18,7 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
@@ -60,16 +59,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        nome = (EditText) findViewById(R.id.edit_cadastro_nome);
-        email = (EditText) findViewById(R.id.edit_cadastro_email);
-        cpf = (EditText) findViewById(R.id.edit_cadastro_cpf);
-        telefone = (EditText) findViewById(R.id.edit_cadastro_telefone);
-        dataNascimento = (EditText) findViewById(R.id.edit_cadastro_dataNascimento);
-        numeroApartamento = (EditText) findViewById(R.id.edit_cadastro_numeroApartamento);
-        blocoApartamento = (EditText) findViewById(R.id.edit_cadastro_blocoApartamento);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroupId_cadastro);
-        botaoSalvar = (Button) findViewById(R.id.bt_cadastro_salvar1);
-        botaoOculto = (Button) findViewById(R.id.bt_cadastro_salvar2);
+        nome = (EditText) findViewById(R.id.edit_cadastro_usuario_nome);
+        email = (EditText) findViewById(R.id.edit_cadastro_usuario_email);
+        cpf = (EditText) findViewById(R.id.edit_cadastro_usuario_cpf);
+        telefone = (EditText) findViewById(R.id.edit_cadastro_usuario_telefone);
+        dataNascimento = (EditText) findViewById(R.id.edit_cadastro_usuario_dataNascimento);
+        numeroApartamento = (EditText) findViewById(R.id.edit_cadastro_usuario_numeroApartamento);
+        blocoApartamento = (EditText) findViewById(R.id.edit_cadastro_usuario_blocoApartamento);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroupId_cadastro_usuario);
+        botaoSalvar = (Button) findViewById(R.id.bt_cadastro_usuario_salvar1);
+        botaoOculto = (Button) findViewById(R.id.bt_cadastro_usuario_salvar2);
 
         //Mascaras
         telefone.addTextChangedListener(Mask.maskTelefone(telefone));
@@ -88,15 +87,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 if(radioButtonEscolhido.getText().equals("Morador")) {
                     numeroApartamento.setVisibility(View.VISIBLE);
                     blocoApartamento.setVisibility(View.VISIBLE);
-                    botaoSalvar = (Button) findViewById(R.id.bt_cadastro_salvar2);
-                    botaoOculto = (Button) findViewById(R.id.bt_cadastro_salvar1);
+                    botaoSalvar = (Button) findViewById(R.id.bt_cadastro_usuario_salvar2);
+                    botaoOculto = (Button) findViewById(R.id.bt_cadastro_usuario_salvar1);
                     botaoSalvar.setVisibility(View.VISIBLE);
                     botaoOculto.setVisibility(View.INVISIBLE);
                 } else {
                     numeroApartamento.setVisibility(View.INVISIBLE);
                     blocoApartamento.setVisibility(View.INVISIBLE);
-                    botaoSalvar = (Button) findViewById(R.id.bt_cadastro_salvar1);
-                    botaoOculto = (Button) findViewById(R.id.bt_cadastro_salvar2);
+                    botaoSalvar = (Button) findViewById(R.id.bt_cadastro_usuario_salvar1);
+                    botaoOculto = (Button) findViewById(R.id.bt_cadastro_usuario_salvar2);
                     botaoSalvar.setVisibility(View.VISIBLE);
                     botaoOculto.setVisibility(View.INVISIBLE);
                 }

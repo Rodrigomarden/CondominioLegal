@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Usuario usuarioRecuperado = dataSnapshot.getValue(Usuario.class);
                                     Preferencia preferencias = new Preferencia(LoginActivity.this);
-                                    System.out.println(usuarioRecuperado.getPerfil());
                                     if(usuarioRecuperado.getPerfil().equals("Morador")) {
                                         preferencias.salvarDadosMorador(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio(), usuarioRecuperado.getIdApartamento(), usuarioRecuperado.getNumeroBlocoApartamento());
                                     } else {

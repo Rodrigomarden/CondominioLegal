@@ -1,5 +1,7 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 /**
@@ -10,12 +12,13 @@ public class Morador {
     private String nome;
     private String cpf;
     private String sexo;
-    private Date dataNascimento;
+    private String dataNascimento;
     private String telefone;
 
     public Morador() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -48,11 +51,11 @@ public class Morador {
         this.sexo = sexo;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

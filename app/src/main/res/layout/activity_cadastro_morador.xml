@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.condominiolegal.condominiolegal.activity.CadastroMoradorActivity">
+
+    <include android:id="@+id/tb_cadastro_morador"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/tb_cadastro_morador"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/tv_cadastro_morador_blocoNumeroApartamento"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_morador_nome"
+                android:hint="Nome"
+                android:layout_below="@+id/tv_cadastro_morador_blocoNumeroApartamento"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_cadastro_morador_cpf"
+                android:layout_below="@+id/edit_cadastro_morador_nome"
+                android:hint="CPF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Sexo:"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/edit_cadastro_morador_cpf" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:id="@+id/spinner_cadastro_morador_sexo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_morador_data_nascimento"
+                android:hint="Data de Nascimento"
+                android:layout_below="@+id/spinner_cadastro_morador_sexo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_morador_telefone"
+                android:layout_below="@+id/edit_cadastro_morador_data_nascimento"
+                android:hint="Telefone" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salvar"
+                android:theme="@style/botaoPadrao"
+                android:id="@+id/bt_cadastro_morador_salvar"
+                android:layout_below="@+id/edit_cadastro_morador_telefone" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -28,7 +28,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_cadastro_nome"
+                android:id="@+id/edit_cadastro_usuario_nome"
                 android:hint="Nome" />
 
             <EditText
@@ -36,15 +36,15 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:ems="10"
-                android:id="@+id/edit_cadastro_email"
-                android:layout_below="@+id/edit_cadastro_nome"
+                android:id="@+id/edit_cadastro_usuario_email"
+                android:layout_below="@+id/edit_cadastro_usuario_nome"
                 android:hint="Email" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_cadastro_cpf"
-                android:layout_below="@+id/edit_cadastro_email"
+                android:id="@+id/edit_cadastro_usuario_cpf"
+                android:layout_below="@+id/edit_cadastro_usuario_email"
                 android:hint="CPF" />
 
             <EditText
@@ -52,8 +52,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:ems="10"
-                android:id="@+id/edit_cadastro_telefone"
-                android:layout_below="@+id/edit_cadastro_cpf"
+                android:id="@+id/edit_cadastro_usuario_telefone"
+                android:layout_below="@+id/edit_cadastro_usuario_cpf"
                 android:hint="Telefone" />
 
             <EditText
@@ -61,8 +61,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/edit_cadastro_dataNascimento"
-                android:layout_below="@+id/edit_cadastro_telefone"
+                android:id="@+id/edit_cadastro_usuario_dataNascimento"
+                android:layout_below="@+id/edit_cadastro_usuario_telefone"
                 android:hint="Data de Nascimento" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Perfil:"
-                android:layout_below="@+id/edit_cadastro_dataNascimento"
+                android:layout_below="@+id/edit_cadastro_usuario_dataNascimento"
                 android:id="@+id/textView" />
 
             <RadioGroup
@@ -78,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:baselineAligned="false"
-                android:id="@+id/radioGroupId_cadastro"
+                android:id="@+id/radioGroupId_cadastro_usuario"
                 android:layout_below="@+id/textView"
                 android:longClickable="false">
 
@@ -86,21 +86,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Síndico"
-                    android:id="@+id/radioButton_cadastro_sindico"
+                    android:id="@+id/radioButton_cadastro_usuario_sindico"
                     android:checked="false" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Secretário"
-                    android:id="@+id/radioButton_cadastro_secretario"
+                    android:id="@+id/radioButton_cadastro_usuario_secretario"
                     android:checked="false" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Morador"
-                    android:id="@+id/radioButton_cadastro_morador"
+                    android:id="@+id/radioButton_cadastro_usuario_morador"
                     android:checked="false" />
             </RadioGroup>
 
@@ -108,31 +108,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/salvar"
-                android:layout_below="@+id/radioGroupId_cadastro"
+                android:layout_below="@+id/radioGroupId_cadastro_usuario"
                 android:theme="@style/botaoPadrao"
-                android:id="@+id/bt_cadastro_salvar1" />
+                android:id="@+id/bt_cadastro_usuario_salvar1" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_cadastro_numeroApartamento"
-                android:layout_below="@+id/radioGroupId_cadastro"
+                android:id="@+id/edit_cadastro_usuario_numeroApartamento"
+                android:layout_below="@+id/radioGroupId_cadastro_usuario"
                 android:hint="Número do Apartamento" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edit_cadastro_blocoApartamento"
-                android:layout_below="@+id/edit_cadastro_numeroApartamento"
+                android:id="@+id/edit_cadastro_usuario_blocoApartamento"
+                android:layout_below="@+id/edit_cadastro_usuario_numeroApartamento"
                 android:hint="Bloco do Apartamento" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/salvar"
-                android:layout_below="@+id/edit_cadastro_blocoApartamento"
+                android:layout_below="@+id/edit_cadastro_usuario_blocoApartamento"
                 android:theme="@style/botaoPadrao"
-                android:id="@+id/bt_cadastro_salvar2" />
+                android:id="@+id/bt_cadastro_usuario_salvar2" />
 
         </RelativeLayout>
     </ScrollView>

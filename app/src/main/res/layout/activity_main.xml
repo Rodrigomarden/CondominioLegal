@@ -15,4 +15,27 @@
         android:id="@+id/bt_usuario"
         android:layout_below="@+id/tb_main"
         android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apartamento"
+        android:id="@+id/bt_apartamento"
+        android:layout_below="@+id/bt_usuario"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Morador"
+        android:id="@+id/bt_morador"
+        android:layout_below="@+id/bt_apartamento"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carro"
+        android:id="@+id/bt_carro"
+        android:layout_below="@+id/bt_morador"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
@@ -23,6 +25,7 @@ public class Apartamento {
         this.nomeProprietario = nomeProprietario;
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

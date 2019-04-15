@@ -31,5 +31,12 @@ public class Mask {
         return maskCpf;
     }
 
+    public static MaskTextWatcher maskPlaca(EditText placa) {
+        SimpleMaskFormatter simpleMaskCpf = new SimpleMaskFormatter("LLL-NNNN");
+        MaskTextWatcher maskPlaca = new MaskTextWatcher(placa, simpleMaskCpf);
+
+        return maskPlaca;
+    }
+
 
 }

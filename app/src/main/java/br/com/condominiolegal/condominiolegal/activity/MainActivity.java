@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private Button botaoCadastrarUsuario;
+    private Button botaoCadastrarApartamento;
+    private Button botaoCadastrarMorador;
+    private Button botaoCadastrarCarro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,40 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         botaoCadastrarUsuario = (Button) findViewById(R.id.bt_usuario);
+        botaoCadastrarApartamento = (Button) findViewById(R.id.bt_apartamento);
+        botaoCadastrarMorador = (Button) findViewById(R.id.bt_morador);
+        botaoCadastrarCarro = (Button) findViewById(R.id.bt_carro);
 
         botaoCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        botaoCadastrarApartamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CadastroApartamentoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        botaoCadastrarMorador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
+                intent.putExtra("tipoCadastro", "Cadastro de Morador");
+                startActivity(intent);
+            }
+        });
+
+        botaoCadastrarCarro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
+                intent.putExtra("tipoCadastro", "Cadastro de Carro");
                 startActivity(intent);
             }
         });
