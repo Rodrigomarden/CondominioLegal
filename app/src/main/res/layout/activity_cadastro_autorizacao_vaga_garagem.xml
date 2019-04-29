@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.condominiolegal.condominiolegal.activity.CadastroAutorizacaoVagaGaragemActivity">
+
+
+    <include android:id="@+id/tb_cadastro_autorizacao_vaga_garagem"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_cadastro_autorizacao_vaga_garagem"
+        android:id="@+id/scrollView2"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tv_cadastro_autorizacao_vaga_garagem_blocoNumeroApartamento"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_cadastro_autorizacao_vaga_garagem_blocoNumeroApartamento"
+                android:id="@+id/edit_cadastro_autorizacao_vaga_garagem_placa"
+                android:hint="Placa" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_cadastro_autorizacao_vaga_garagem_placa"
+                android:id="@+id/edit_cadastro_autorizacao_vaga_garagem_modelo"
+                android:hint="Modelo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_cadastro_autorizacao_vaga_garagem_modelo"
+                android:id="@+id/edit_cadastro_autorizacao_vaga_garagem_marca"
+                android:hint="Marca" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_cadastro_autorizacao_vaga_garagem_marca"
+                android:id="@+id/edit_cadastro_autorizacao_vaga_garagem_data_limite_acesso"
+                android:hint="Data Limite de Acesso" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salvar"
+                android:theme="@style/botaoPadrao"
+                android:id="@+id/bt_cadastro_autorizacao_vaga_garagem_salvar"
+                android:layout_below="@+id/edit_cadastro_autorizacao_vaga_garagem_data_limite_acesso" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

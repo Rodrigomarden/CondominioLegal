@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude;
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Apartamento {
+public class Apartamento extends Identificador {
     private String id;
     private int numero;
     private String bloco;

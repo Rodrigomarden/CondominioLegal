@@ -1,21 +1,22 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Correspondencia {
+public class Correspondencia extends Identificador{
     private String id;
-    private Date data;
+    private String data;
     private String status;
     private String tipo;
-    private String idApartamento;
-    private String numeroBlocoApartamento;
 
     public Correspondencia() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -24,11 +25,11 @@ public class Correspondencia {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -46,21 +47,5 @@ public class Correspondencia {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getIdApartamento() {
-        return idApartamento;
-    }
-
-    public void setIdApartamento(String idApartamento) {
-        this.idApartamento = idApartamento;
-    }
-
-    public String getNumeroBlocoApartamento() {
-        return numeroBlocoApartamento;
-    }
-
-    public void setNumeroBlocoApartamento(String numeroBlocoApartamento) {
-        this.numeroBlocoApartamento = numeroBlocoApartamento;
     }
 }

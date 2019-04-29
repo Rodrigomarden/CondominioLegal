@@ -3,7 +3,7 @@ package br.com.condominiolegal.condominiolegal.model;
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Condominio {
+public class Condominio extends Identificador {
     private String id;
     private String nome;
     private String rua;

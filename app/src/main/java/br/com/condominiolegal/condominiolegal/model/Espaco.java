@@ -1,9 +1,11 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Espaco {
+public class Espaco extends Identificador {
     private String id;
     private String nome;
     private Float valor;
@@ -11,6 +13,7 @@ public class Espaco {
     public Espaco() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

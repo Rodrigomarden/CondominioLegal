@@ -1,16 +1,18 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Documento {
+public class Documento extends Identificador {
     private String id;
     private String titulo;
-    private String urlAnexo;
 
     public Documento() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -27,11 +29,4 @@ public class Documento {
         this.titulo = titulo;
     }
 
-    public String getUrlAnexo() {
-        return urlAnexo;
-    }
-
-    public void setUrlAnexo(String urlAnexo) {
-        this.urlAnexo = urlAnexo;
-    }
 }

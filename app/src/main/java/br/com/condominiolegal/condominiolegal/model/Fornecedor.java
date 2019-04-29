@@ -1,9 +1,11 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Fornecedor {
+public class Fornecedor extends Identificador {
     private String id;
     private String nome;
     private String descricao;
@@ -13,6 +15,7 @@ public class Fornecedor {
     public Fornecedor() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

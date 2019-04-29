@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
+import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.Mask;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Morador;
@@ -47,7 +46,7 @@ public class CadastroMoradorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_morador);
 
-        //Recuperar os dados do Contato para conversa pela intent
+        //Recuperar os dados pela intent
         Bundle extra = getIntent().getExtras();
         if(extra != null) {
             idApartamento = extra.getString("idApartamento");
@@ -95,11 +94,16 @@ public class CadastroMoradorActivity extends AppCompatActivity {
                     morador.setSexo(sexo.getSelectedItem().toString());
                     morador.setTelefone(telefone.getText().toString());
 
-                    Boolean retornoCadastro = cadastrarMorador();
-                    if(retornoCadastro) {
-                        Toast.makeText(CadastroMoradorActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                    //Verificação de datas
+                    if(!DateValidator.validacaoData(morador.getDataNascimento())) {
+                        Toast.makeText(CadastroMoradorActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(CadastroMoradorActivity.this, "Problema ao realizar cadastro, tente novamente!", Toast.LENGTH_SHORT).show();
+                        Boolean retornoCadastro = cadastrarMorador();
+                        if (retornoCadastro) {
+                            Toast.makeText(CadastroMoradorActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(CadastroMoradorActivity.this, "Problema ao realizar cadastro, tente novamente!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } else {
                     Toast.makeText(CadastroMoradorActivity.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
@@ -114,6 +118,9 @@ public class CadastroMoradorActivity extends AppCompatActivity {
             //Recupera o ID do condominio
             Preferencia preferencia = new Preferencia(CadastroMoradorActivity.this);
             String idCondominio = preferencia.getIdCondominio();
+            String idUsuario = preferencia.getId();
+            morador.setIdUsuario(idUsuario);
+            morador.setDataInsercao(DateValidator.obterDataAtual());
 
             firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("moradores");
             firebase.push()

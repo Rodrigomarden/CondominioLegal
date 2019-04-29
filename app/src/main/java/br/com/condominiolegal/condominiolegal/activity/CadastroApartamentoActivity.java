@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
+import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Apartamento;
 
@@ -75,8 +76,12 @@ public class CadastroApartamentoActivity extends AppCompatActivity {
 
     private boolean cadastrarApartamento() {
         try{
+            //Recupera o ID do condominio
             Preferencia preferencia = new Preferencia(CadastroApartamentoActivity.this);
             String idCondominio = preferencia.getIdCondominio();
+            String idUsuario = preferencia.getId();
+            apartamento.setIdUsuario(idUsuario);
+            apartamento.setDataInsercao(DateValidator.obterDataAtual());
 
             firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos");
             firebase.push()

@@ -1,21 +1,23 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class PessoasLivreAcesso {
+public class PessoasLivreAcesso extends Identificador {
     private String id;
     private String nome;
-    private Date dataNascimento;
-    private String idApartamento;
-    private String numerBlocoApartamento;
-    private Date dataLimiteAcesso;
+    private String dataNascimento;
+    private String dataLimiteAcesso;
+    private String cpf;
 
     public PessoasLivreAcesso() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -32,35 +34,27 @@ public class PessoasLivreAcesso {
         this.nome = nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getIdApartamento() {
-        return idApartamento;
-    }
-
-    public void setIdApartamento(String idApartamento) {
-        this.idApartamento = idApartamento;
-    }
-
-    public String getNumerBlocoApartamento() {
-        return numerBlocoApartamento;
-    }
-
-    public void setNumerBlocoApartamento(String numerBlocoApartamento) {
-        this.numerBlocoApartamento = numerBlocoApartamento;
-    }
-
-    public Date getDataLimiteAcesso() {
+    public String getDataLimiteAcesso() {
         return dataLimiteAcesso;
     }
 
-    public void setDataLimiteAcesso(Date dataLimiteAcesso) {
+    public void setDataLimiteAcesso(String dataLimiteAcesso) {
         this.dataLimiteAcesso = dataLimiteAcesso;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

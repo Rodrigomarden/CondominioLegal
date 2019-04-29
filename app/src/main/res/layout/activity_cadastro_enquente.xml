@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.condominiolegal.condominiolegal.activity.CadastroEnquenteActivity">
+
+    <include android:id="@+id/tb_cadastro_enquete"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/tb_cadastro_enquete"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_cadastro_enquente_titulo"
+                android:hint="Título" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_cadastro_enquente_data_encerramento"
+                android:layout_below="@+id/edit_cadastro_enquente_titulo"
+                android:hint="Data de encerramento" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Tipo:"
+                android:id="@+id/textView_cadastro_enquente_tipo"
+                android:layout_below="@+id/edit_cadastro_enquente_data_encerramento" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_cadastro_enquente_data_encerramento"
+                android:layout_toRightOf="@+id/textView_cadastro_enquente_tipo"
+                android:id="@+id/spinner_cadastro_enquente_tipo"
+                android:layout_marginTop="2dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner_cadastro_enquente_tipo"
+                android:id="@+id/imageButton_cadastro_enquete_remove"
+                android:background="@drawable/ic_remove_circle_outline_red"
+                android:padding="15dp"
+                android:layout_marginTop="10dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner_cadastro_enquente_tipo"
+                android:layout_toRightOf="@+id/imageButton_cadastro_enquete_remove"
+                android:id="@+id/imageButton_cadastro_enquete_add"
+                android:background="@drawable/ic_add_circle_outline_green"
+                android:layout_marginLeft="20dp"
+                android:padding="15dp"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/imageButton_cadastro_enquete_remove"
+                android:id="@+id/layout_linear_cadastro_enquete">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_cadastro_enquente_opcao1"
+                    android:hint="Opção 1"
+                    android:layout_marginTop="10dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edit_cadastro_enquente_opcao2"
+                    android:hint="Opção 2" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salvar"
+                android:theme="@style/botaoPadrao"
+                android:id="@+id/bt_cadastro_enquete_salvar"
+                android:layout_below="@+id/layout_linear_cadastro_enquete" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

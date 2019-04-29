@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
+import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.Mask;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Carro;
@@ -71,10 +72,6 @@ public class CadastroCarroActivity extends AppCompatActivity {
         cpf.addTextChangedListener(Mask.maskCpf(cpf));
         placa.addTextChangedListener(Mask.maskPlaca(placa));
 
-        //Recupera o ID do condominio
-        Preferencia preferencia = new Preferencia(CadastroCarroActivity.this);
-        String idCondominio = preferencia.getIdCondominio();
-
         //Seta o número e o bloco do apartamento na tela
         blocoNumeroApartamento.setText("Bloco: " + blocoApartamento + " Apto: " + numeroApartamento);
 
@@ -107,6 +104,9 @@ public class CadastroCarroActivity extends AppCompatActivity {
             //Recupera o ID do condominio
             Preferencia preferencia = new Preferencia(CadastroCarroActivity.this);
             String idCondominio = preferencia.getIdCondominio();
+            String idUsuario = preferencia.getId();
+            carro.setIdUsuario(idUsuario);
+            carro.setDataInsercao(DateValidator.obterDataAtual());
 
             firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("carros");
             firebase.push()

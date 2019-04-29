@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth autenticacao;
     private ValueEventListener valueEventListenerUsuario;
     private DatabaseReference firebase;
+    private DatabaseReference atualizarUsuario;
 
     private String identificadorUsuarioLogado;
 
@@ -84,33 +85,29 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
 
-
-
                             identificadorUsuarioLogado = Base64Custom.codificarBase64(usuario.getEmail());
                             firebase = ConfiguracaoFirebase.getFirebase().child("usuarios").child(identificadorUsuarioLogado);
-                            valueEventListenerUsuario = new ValueEventListener() {
+                            firebase.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     Usuario usuarioRecuperado = dataSnapshot.getValue(Usuario.class);
                                     Preferencia preferencias = new Preferencia(LoginActivity.this);
+
                                     if(usuarioRecuperado.getPerfil().equals("Morador")) {
                                         preferencias.salvarDadosMorador(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio(), usuarioRecuperado.getIdApartamento(), usuarioRecuperado.getNumeroBlocoApartamento());
                                     } else {
                                         preferencias.salvarDados(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio());
                                     }
+
+                                    abrirTelaPrincipal();
                                 }
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
 
                                 }
-                            };
-                            firebase.addListenerForSingleValueEvent(valueEventListenerUsuario);
+                            });
 
-
-
-
-                            abrirTelaPrincipal();
                             Toast.makeText(LoginActivity.this, "Sucesso ao fazer login!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(LoginActivity.this, "E-mail ou senha incorreta!", Toast.LENGTH_SHORT).show();

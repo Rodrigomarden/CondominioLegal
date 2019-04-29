@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="correspondencia_array">
+        <item>Envelope</item>
+        <item>Pacote</item>
+        <item>Caixa</item>
+    </string-array>
+</resources>

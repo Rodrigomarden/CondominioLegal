@@ -1,21 +1,23 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Comunicado {
+public class Comunicado extends Identificador {
     private String id;
     private String titulo;
-    private String texto;
-    private String urlAnexo;
-    private Date dataInicio;
-    private Date dataFim;
+    private String descricao;
+    private String dataFim;
 
     public Comunicado() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -32,35 +34,19 @@ public class Comunicado {
         this.titulo = titulo;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getUrlAnexo() {
-        return urlAnexo;
-    }
-
-    public void setUrlAnexo(String urlAnexo) {
-        this.urlAnexo = urlAnexo;
-    }
-
-    public Date getDataInicio() {
-        return dataInicio;
-    }
-
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 }

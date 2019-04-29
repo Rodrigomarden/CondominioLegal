@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Morador {
+public class Morador extends Identificador {
     private String id;
     private String nome;
     private String cpf;

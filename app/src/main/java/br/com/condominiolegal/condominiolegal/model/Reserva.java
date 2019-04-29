@@ -1,12 +1,14 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.sql.Time;
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Reserva {
+public class Reserva extends Identificador {
     private String id;
     private Date data;
     private Time hora;
@@ -19,6 +21,7 @@ public class Reserva {
     public Reserva() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

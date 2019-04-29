@@ -1,9 +1,11 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class ServicoProduto {
+public class ServicoProduto extends Identificador {
     private String id;
     private String titulo;
     private String descricao;
@@ -14,6 +16,7 @@ public class ServicoProduto {
     public ServicoProduto() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }

@@ -10,7 +10,7 @@ import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Usuario {
+public class Usuario extends Identificador {
     private String id;
     private String email;
     private String senha;

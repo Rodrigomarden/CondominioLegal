@@ -68,8 +68,6 @@ public class ListaApartamentoActivity extends AppCompatActivity {
         Preferencia preferencia = new Preferencia(ListaApartamentoActivity.this);
         String idCondominio = preferencia.getIdCondominio();
 
-        //firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos");
-
         Query query = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").orderByChild("numeroBloco");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -103,6 +101,15 @@ public class ListaApartamentoActivity extends AppCompatActivity {
                         break;
                     case "Cadastro de Carro":
                         intent = new Intent(ListaApartamentoActivity.this, CadastroCarroActivity.class);
+                        break;
+                    case "Cadastro de Pessoa de Livre Acesso":
+                        intent = new Intent(ListaApartamentoActivity.this, CadastroPessoaLivreAcessoActivity.class);
+                        break;
+                    case "Cadastro de Autorização Vaga de Garagem":
+                        intent = new Intent(ListaApartamentoActivity.this, CadastroAutorizacaoVagaGaragemActivity.class);
+                        break;
+                    case "Cadastro de Correspondência":
+                        intent = new Intent(ListaApartamentoActivity.this, CadastroCorrespondenciaActivity.class);
                         break;
                     default:
                         intent = new Intent(ListaApartamentoActivity.this, MainActivity.class);

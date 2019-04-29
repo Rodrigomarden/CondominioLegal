@@ -21,11 +21,17 @@ public class Preferencia {
     private final String CHAVE_NOME_CONDOMINIO = "nomeCondominioUsuarioLogado";
     private final String CHAVE_ID_APARTAMENTO = "idApartamentoUsuarioLogado";
     private final String CHAVE_NUMERO_BLOCO_APARTAMENTO = "numeroBlocoApartamentoUsuarioLogado";
+    private final String CHAVE_TOKEN = "tokenUsuarioLogado";
 
     public Preferencia(Context contextoParametro) {
         contexto=contextoParametro;
         preferences = contexto.getSharedPreferences(NOME_ARQUIVO, MODE);
         editor = preferences.edit();
+    }
+
+    public void salvarToken(String token) {
+        editor.putString(CHAVE_TOKEN, token);
+        editor.commit();
     }
 
     public void salvarDados(String identificadorUsuario, String nomeUsuario, String perfilUsuario, String idCondominio, String nomeCondominio) {
@@ -97,6 +103,13 @@ public class Preferencia {
     public String getNumeroBlocoApartamento() {
         String dados = "";
         dados = preferences.getString(CHAVE_NUMERO_BLOCO_APARTAMENTO, null);
+
+        return dados;
+    }
+
+    public String getToken() {
+        String dados = "";
+        dados = preferences.getString(CHAVE_TOKEN, null);
 
         return dados;
     }

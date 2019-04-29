@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.condominiolegal.condominiolegal">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -41,7 +46,47 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.CadastroCarroActivity"></activity>
+        <activity android:name=".activity.CadastroCarroActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroPessoaLivreAcessoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroAutorizacaoVagaGaragemActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroCorrespondenciaActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroComunicadoActivity" />
+
+        <service android:name=".notification.FCMService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".notification.FCMInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activity.CadastroDocumentoActivity" />
+        <activity android:name=".activity.CadastroEnquenteActivity" />
+        <activity android:name=".activity.CadastroReclamacaoGeralActivity" />
+        <activity android:name=".activity.CadastroEspacoActivity"></activity>
     </application>
 
 </manifest>

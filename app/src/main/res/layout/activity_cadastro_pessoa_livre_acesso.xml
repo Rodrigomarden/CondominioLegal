@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.condominiolegal.condominiolegal.activity.CadastroPessoaLivreAcessoActivity">
+
+    <include android:id="@+id/tb_cadastro_pessoa_livre_acesso"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/tb_cadastro_pessoa_livre_acesso"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/tv_cadastro_pessoa_livre_acesso_blocoNumeroApartamento"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_pessoa_livre_acesso_nome"
+                android:hint="Nome"
+                android:layout_below="@+id/tv_cadastro_pessoa_livre_acesso_blocoNumeroApartamento"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_cadastro_pessoa_livre_acesso_cpf"
+                android:layout_below="@+id/edit_cadastro_pessoa_livre_acesso_nome"
+                android:hint="CPF" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_pessoa_livre_acesso_data_nascimento"
+                android:hint="Data de Nascimento"
+                android:layout_below="@+id/edit_cadastro_pessoa_livre_acesso_cpf" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/edit_cadastro_pessoa_livre_acesso_data_limite_acesso"
+                android:hint="Data Limite de Acesso"
+                android:layout_below="@+id/edit_cadastro_pessoa_livre_acesso_data_nascimento" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salvar"
+                android:theme="@style/botaoPadrao"
+                android:id="@+id/bt_cadastro_pessoa_livre_acesso_salvar"
+                android:layout_below="@+id/edit_cadastro_pessoa_livre_acesso_data_limite_acesso" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

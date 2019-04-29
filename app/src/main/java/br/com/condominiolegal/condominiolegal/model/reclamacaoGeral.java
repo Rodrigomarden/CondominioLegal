@@ -1,18 +1,20 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class reclamacaoGeral {
+public class ReclamacaoGeral extends Identificador {
     private String id;
     private String titulo;
-    private String urlAnexo;
-    private String mensagem;
+    private String descricao;
     private String status;
 
-    public reclamacaoGeral() {
+    public ReclamacaoGeral() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -29,20 +31,12 @@ public class reclamacaoGeral {
         this.titulo = titulo;
     }
 
-    public String getUrlAnexo() {
-        return urlAnexo;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setUrlAnexo(String urlAnexo) {
-        this.urlAnexo = urlAnexo;
-    }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getStatus() {

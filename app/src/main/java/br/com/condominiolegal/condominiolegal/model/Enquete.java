@@ -1,22 +1,22 @@
 package br.com.condominiolegal.condominiolegal.model;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Enquete {
+public class Enquete extends Identificador {
     private String id;
     private String titulo;
-    private Date dataInicio;
-    private Date dataFim;
-    private String idOpcao;
-    private String nomeOpcao;
+    private String dataEncerramento;
     private String tipo;
 
     public Enquete() {
     }
 
+    @Exclude
     public String getId() {
         return id;
     }
@@ -33,36 +33,12 @@ public class Enquete {
         this.titulo = titulo;
     }
 
-    public Date getDataInicio() {
-        return dataInicio;
+    public String getDataEncerramento() {
+        return dataEncerramento;
     }
 
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public Date getDataFim() {
-        return dataFim;
-    }
-
-    public void setDataFim(Date dataFim) {
-        this.dataFim = dataFim;
-    }
-
-    public String getIdOpcao() {
-        return idOpcao;
-    }
-
-    public void setIdOpcao(String idOpcao) {
-        this.idOpcao = idOpcao;
-    }
-
-    public String getNomeOpcao() {
-        return nomeOpcao;
-    }
-
-    public void setNomeOpcao(String nomeOpcao) {
-        this.nomeOpcao = nomeOpcao;
+    public void setDataEncerramento(String dataEncerramento) {
+        this.dataEncerramento = dataEncerramento;
     }
 
     public String getTipo() {

@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 import br.com.condominiolegal.condominiolegal.helper.Base64Custom;
+import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.Mask;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Usuario;
@@ -80,6 +81,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         blocoApartamento.setVisibility(View.INVISIBLE);
         botaoOculto.setVisibility(View.INVISIBLE);
 
+        //Capturando RadioButton
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -120,11 +122,22 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                         usuario.setNumeroBlocoApartamento(numeroApartamento.getText().toString() + "_" + blocoApartamento.getText().toString());
                     }
 
+                    //Recupera o ID do condominio
                     Preferencia preferencia = new Preferencia(CadastroUsuarioActivity.this);
                     usuario.setIdCondominio(preferencia.getIdCondominio());
                     usuario.setNomeCondominio(preferencia.getNomeCondominio());
+                    String idUsuario = preferencia.getId();
+                    usuario.setIdUsuario(idUsuario);
+                    usuario.setDataInsercao(DateValidator.obterDataAtual());
 
-                    cadastrarUsuario();
+                    //Verificação de datas
+                    if(!DateValidator.validacaoData(usuario.getDataNascimento())) {
+                        Toast.makeText(CadastroUsuarioActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        cadastrarUsuario();
+                    }
+
+
                 }
                 else{
                     Toast.makeText(CadastroUsuarioActivity.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();

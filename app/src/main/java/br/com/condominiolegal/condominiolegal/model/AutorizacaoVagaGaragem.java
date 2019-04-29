@@ -2,18 +2,20 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.util.Date;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Carro extends Identificador {
+public class AutorizacaoVagaGaragem extends Identificador {
     private String id;
     private String placa;
     private String modelo;
     private String marca;
-    private String nomeDono;
-    private String cpf;
+    private String idApartamento;
+    private String dataLimiteAcesso;
 
-    public Carro() {
+    public AutorizacaoVagaGaragem() {
     }
 
     @Exclude
@@ -29,7 +31,7 @@ public class Carro extends Identificador {
         return placa;
     }
 
-    public void setPlaca(String placa) {
+    public void setPlaca(String placaVeiculo) {
         this.placa = placa;
     }
 
@@ -49,19 +51,20 @@ public class Carro extends Identificador {
         this.marca = marca;
     }
 
-    public String getNomeDono() {
-        return nomeDono;
+    public String getIdApartamento() {
+        return idApartamento;
     }
 
-    public void setNomeDono(String nomeDono) {
-        this.nomeDono = nomeDono;
+    public void setIdApartamento(String idApartamento) {
+        this.idApartamento = idApartamento;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getDataLimiteAcesso() {
+        return dataLimiteAcesso;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDataLimiteAcesso(String dataLimiteAcesso) {
+        this.dataLimiteAcesso = dataLimiteAcesso;
     }
+
 }
