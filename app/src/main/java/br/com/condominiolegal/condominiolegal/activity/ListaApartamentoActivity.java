@@ -111,6 +111,9 @@ public class ListaApartamentoActivity extends AppCompatActivity {
                     case "Cadastro de Correspondência":
                         intent = new Intent(ListaApartamentoActivity.this, CadastroCorrespondenciaActivity.class);
                         break;
+                    case "Cadastro de Reserva":
+                        intent = new Intent(ListaApartamentoActivity.this, CadastroReservaActivity.class);
+                        break;
                     default:
                         intent = new Intent(ListaApartamentoActivity.this, MainActivity.class);
                 }

@@ -13,6 +13,12 @@ public class Espaco extends Identificador {
     public Espaco() {
     }
 
+    public Espaco(String id, String nome, Float valor) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+    }
+
     @Exclude
     public String getId() {
         return id;
@@ -36,5 +42,10 @@ public class Espaco extends Identificador {
 
     public void setValor(Float valor) {
         this.valor = valor;
+    }
+
+    @Override
+    public String toString() {
+        return nome;
     }
 }

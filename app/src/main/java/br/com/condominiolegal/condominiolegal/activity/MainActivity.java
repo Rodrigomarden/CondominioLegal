@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private Button botaoCadastrarDocumento;
     private Button botaoCadastrarEnquete;
     private Button botaoCadastrarReclamacaoGeral;
+    private Button botaoCadastrarReserva;
+    private Button botaoCadastrarEspaco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarDocumento = (Button) findViewById(R.id.bt_documento);
         botaoCadastrarEnquete = (Button) findViewById(R.id.bt_enquete);
         botaoCadastrarReclamacaoGeral = (Button) findViewById(R.id.bt_reclamacao_geral);
+        botaoCadastrarReserva = (Button) findViewById(R.id.bt_reserva);
+        botaoCadastrarEspaco = (Button) findViewById(R.id.bt_espaco);
 
 
         botaoCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +158,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CadastroReclamacaoGeralActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        botaoCadastrarReserva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
+                intent.putExtra("tipoCadastro", "Cadastro de Reserva");
+                startActivity(intent);
+            }
+        });
+
+        botaoCadastrarEspaco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CadastroEspacoActivity.class);
                 startActivity(intent);
             }
         });

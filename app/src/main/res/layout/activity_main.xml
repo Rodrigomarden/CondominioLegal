@@ -109,6 +109,22 @@
                 android:layout_below="@+id/bt_enquete"
                 android:layout_centerHorizontal="true" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reserva"
+                android:id="@+id/bt_reserva"
+                android:layout_below="@+id/bt_reclamacao_geral"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Espaco"
+                android:id="@+id/bt_espaco"
+                android:layout_below="@+id/bt_reserva"
+                android:layout_centerHorizontal="true" />
+
         </RelativeLayout>
     </ScrollView>
 

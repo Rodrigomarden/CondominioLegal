@@ -30,7 +30,7 @@ public class CadastroEspacoActivity extends AppCompatActivity {
     private Espaco espaco;
 
     private DatabaseReference firebase;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -70,7 +70,42 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.CadastroComunicadoActivity" />
+        <activity android:name=".activity.CadastroComunicadoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroDocumentoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroEnquenteActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroReclamacaoGeralActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroReservaActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.CadastroEspacoActivity">
+            android:parentActivityName=".activity.CadastroReservaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.CadastroReservaActivity" />
+        </activity>
 
         <service android:name=".notification.FCMService">
             <intent-filter>
@@ -83,10 +118,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.CadastroDocumentoActivity" />
-        <activity android:name=".activity.CadastroEnquenteActivity" />
-        <activity android:name=".activity.CadastroReclamacaoGeralActivity" />
-        <activity android:name=".activity.CadastroEspacoActivity"></activity>
     </application>
 
 </manifest>

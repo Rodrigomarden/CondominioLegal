@@ -9,7 +9,7 @@ public class OpcaoEnquente {
 
     private String id;
     private String opcao;
-    private String qntdVotos;
+    private int qntdVotos;
 
     public OpcaoEnquente() {
     }
@@ -31,11 +31,11 @@ public class OpcaoEnquente {
         this.opcao = opcao;
     }
 
-    public String getQntdVotos() {
+    public int getQntdVotos() {
         return qntdVotos;
     }
 
-    public void setQntdVotos(String qntdVotos) {
+    public void setQntdVotos(int qntdVotos) {
         this.qntdVotos = qntdVotos;
     }
 }
