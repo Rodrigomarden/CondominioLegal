@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListaUsuarioActivity.class);
                 startActivity(intent);
             }
         });
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
-                intent.putExtra("tipoCadastro", "Cadastro de Morador");
+                intent.putExtra("tipoCadastro", "Morador");
                 startActivity(intent);
             }
         });
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
-                intent.putExtra("tipoCadastro", "Cadastro de Correspondência");
+                intent.putExtra("tipoCadastro", "Correspondência");
                 startActivity(intent);
             }
         });

@@ -67,7 +67,7 @@ public class CadastroCorrespondenciaActivity extends AppCompatActivity {
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_correspondencia_salvar);
 
         //Seta o número e o bloco do apartamento na tela
-        blocoNumeroApartamento.setText("Bloco: " + blocoApartamento + " Apto: " + numeroApartamento);
+        blocoNumeroApartamento.setText("Bloco " + blocoApartamento + ", Apto. " + numeroApartamento);
 
         //Capturando RadioButton
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

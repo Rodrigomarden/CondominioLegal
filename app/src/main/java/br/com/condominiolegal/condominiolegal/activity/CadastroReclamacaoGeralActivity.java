@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -36,7 +35,6 @@ import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Anexo;
-import br.com.condominiolegal.condominiolegal.model.Comunicado;
 import br.com.condominiolegal.condominiolegal.model.ReclamacaoGeral;
 
 public class CadastroReclamacaoGeralActivity extends AppCompatActivity {
@@ -84,7 +82,7 @@ public class CadastroReclamacaoGeralActivity extends AppCompatActivity {
         tilDescricao.setCounterMaxLength(1000);
 
         //Listar Arquivos
-        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.lista_arquivo, R.id.tv_lista_arquivo, listaNomeArquivos);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.adapter_lista_arquivo, R.id.tv_lista_arquivo, listaNomeArquivos);
 
         listaArquivos.setAdapter(adapter);
 

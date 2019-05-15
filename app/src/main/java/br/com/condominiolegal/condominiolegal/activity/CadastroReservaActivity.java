@@ -47,7 +47,7 @@ public class CadastroReservaActivity extends AppCompatActivity implements DatePi
     private Spinner espaco;
 
     private String[] nomesEspaco = new String[]{""};
-    private ArrayList<Espaco> listaEspacos;
+    private ArrayList<Espaco> listaEspacos = new ArrayList<>();;
     private int posicaoSpinner;
 
     private String idApartamento;
@@ -89,11 +89,15 @@ public class CadastroReservaActivity extends AppCompatActivity implements DatePi
         blocoNumeroApartamento.setText("Bloco: " + blocoApartamento + " Apto: " + numeroApartamento);
 
         listaEspacos = new ArrayList<>();
-        listaEspacos.add(new Espaco("-LeDvgyRyD3KPux7AEDi", "QUADRA FUTEBOL", Float.parseFloat("50")));
-        listaEspacos.add(new Espaco("-LeDx7aLtEngRswSk1Ow", "SALAO DE FESTAS", Float.parseFloat("30")));
+        //listaEspacos.add(new Espaco("-LeDvgyRyD3KPux7AEDi", "QUADRA FUTEBOL", Float.parseFloat("50")));
+        //listaEspacos.add(new Espaco("-LeDx7aLtEngRswSk1Ow", "SALAO DE FESTAS", Float.parseFloat("30")));
+
+        //Configurando Spinner
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listaEspacos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        espaco.setAdapter(adapter);
 
         //Recuperar espacos do firebase
-       /* listaEspacos = new ArrayList<>();
         Preferencia preferencia = new Preferencia(CadastroReservaActivity.this);
         String idCondominio = preferencia.getIdCondominio();
         Query queryBuscarEspaco = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("espacos").orderByChild("nome");
@@ -110,18 +114,14 @@ public class CadastroReservaActivity extends AppCompatActivity implements DatePi
                     listaEspacos.add(espaco);
                     nomesEspaco[i] = espaco.getNome();
                 }
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
-
-        //Configurando Spinner
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listaEspacos);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        espaco.setAdapter(adapter);
+        });
 
 
         //Método para capturar o item selecionado do Spinner
@@ -216,16 +216,16 @@ public class CadastroReservaActivity extends AppCompatActivity implements DatePi
 
     public void selecionarHorario() {
 
-        horarios = new ArrayList<>();
-        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        builder.setTitle("Selecione uma Cor");
-        builder.setItems(horarios, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int selecionado) {
-                Toast.makeText(CadastroReservaActivity.this, "Cor Selecionada: " + horarios.get(selecionado),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.create().show();
+//        horarios = new ArrayList<>();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+//        builder.setTitle("Selecione uma Cor");
+//        builder.setItems(horarios, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int selecionado) {
+//                Toast.makeText(CadastroReservaActivity.this, "Cor Selecionada: " + horarios.get(selecionado),
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        builder.create().show();
     }
 
 

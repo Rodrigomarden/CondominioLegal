@@ -3,6 +3,7 @@ package br.com.condominiolegal.condominiolegal.model;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
@@ -10,7 +11,7 @@ import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Usuario extends Identificador {
+public class Usuario extends Identificador implements Serializable{
     private String id;
     private String email;
     private String senha;
@@ -22,7 +23,8 @@ public class Usuario extends Identificador {
     private String idCondominio;
     private String nomeCondominio;
     private String idApartamento;
-    private String numeroBlocoApartamento;
+    private String numeroApartamento;
+    private String blocoApartamento;
 
     public Usuario() {
     }
@@ -121,11 +123,19 @@ public class Usuario extends Identificador {
         this.idApartamento = idApartamento;
     }
 
-    public String getNumeroBlocoApartamento() {
-        return numeroBlocoApartamento;
+    public String getNumeroApartamento() {
+        return numeroApartamento;
     }
 
-    public void setNumeroBlocoApartamento(String numeroBlocoApartamento) {
-        this.numeroBlocoApartamento = numeroBlocoApartamento;
+    public void setNumeroApartamento(String numeroApartamento) {
+        this.numeroApartamento = numeroApartamento;
+    }
+
+    public String getBlocoApartamento() {
+        return blocoApartamento;
+    }
+
+    public void setBlocoApartamento(String blocoApartamento) {
+        this.blocoApartamento = blocoApartamento;
     }
 }

@@ -20,7 +20,8 @@ public class Preferencia {
     private final String CHAVE_ID_CONDOMINIO = "idCondominioUsuarioLogado";
     private final String CHAVE_NOME_CONDOMINIO = "nomeCondominioUsuarioLogado";
     private final String CHAVE_ID_APARTAMENTO = "idApartamentoUsuarioLogado";
-    private final String CHAVE_NUMERO_BLOCO_APARTAMENTO = "numeroBlocoApartamentoUsuarioLogado";
+    private final String CHAVE_NUMERO_APARTAMENTO = "numeroApartamentoUsuarioLogado";
+    private final String CHAVE_BLOCO_APARTAMENTO = "blocoApartamentoUsuarioLogado";
     private final String CHAVE_TOKEN = "tokenUsuarioLogado";
 
     public Preferencia(Context contextoParametro) {
@@ -45,7 +46,7 @@ public class Preferencia {
 
     }
 
-    public void salvarDadosMorador(String identificadorUsuario, String nomeUsuario, String perfilUsuario, String idCondominio, String nomeCondominio, String idApartamento, String numeroBlocoApartamento) {
+    public void salvarDadosMorador(String identificadorUsuario, String nomeUsuario, String perfilUsuario, String idCondominio, String nomeCondominio, String idApartamento, String numeroApartamento, String blocoApartamento) {
 
         editor.putString(CHAVE_IDENTIFICADOR, identificadorUsuario);
         editor.putString(CHAVE_NOME, nomeUsuario);
@@ -53,7 +54,8 @@ public class Preferencia {
         editor.putString(CHAVE_ID_CONDOMINIO, idCondominio);
         editor.putString(CHAVE_NOME_CONDOMINIO, nomeCondominio);
         editor.putString(CHAVE_ID_APARTAMENTO, idApartamento);
-        editor.putString(CHAVE_NUMERO_BLOCO_APARTAMENTO, numeroBlocoApartamento);
+        editor.putString(CHAVE_NUMERO_APARTAMENTO, numeroApartamento);
+        editor.putString(CHAVE_BLOCO_APARTAMENTO, blocoApartamento);
         editor.commit();
 
     }
@@ -100,9 +102,16 @@ public class Preferencia {
         return dados;
     }
 
-    public String getNumeroBlocoApartamento() {
+    public String getNumeroApartamento() {
         String dados = "";
-        dados = preferences.getString(CHAVE_NUMERO_BLOCO_APARTAMENTO, null);
+        dados = preferences.getString(CHAVE_NUMERO_APARTAMENTO, null);
+
+        return dados;
+    }
+
+    public String getBlocoApartamento() {
+        String dados = "";
+        dados = preferences.getString(CHAVE_BLOCO_APARTAMENTO, null);
 
         return dados;
     }

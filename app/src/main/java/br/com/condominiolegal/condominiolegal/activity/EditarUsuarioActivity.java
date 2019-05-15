@@ -2,9 +2,8 @@ package br.com.condominiolegal.condominiolegal.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -14,24 +13,20 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
-import br.com.condominiolegal.condominiolegal.helper.Base64Custom;
 import br.com.condominiolegal.condominiolegal.helper.DateValidator;
 import br.com.condominiolegal.condominiolegal.helper.LerApartamento;
 import br.com.condominiolegal.condominiolegal.helper.Mask;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Usuario;
 
-public class CadastroUsuarioActivity extends AppCompatActivity {
+/**
+ * Created by rodri on 15/05/2019.
+ */
+public class EditarUsuarioActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -51,7 +46,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private Usuario usuario;
 
-    private FirebaseAuth autenticacao;
+    private DatabaseReference firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +55,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         //Configurando toolbar
         toolbar = (Toolbar) findViewById(R.id.tb_cadastro_usuario);
-        toolbar.setTitle("Cadastro de Usuário");
+        toolbar.setTitle("Editar Usuário");
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
@@ -73,16 +68,49 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         radioGroup = (RadioGroup) findViewById(R.id.radioGroupId_cadastro_usuario);
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_usuario_salvar);
 
+        //Criar EditText para apartamento
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout_linear_cadastro_usuario);
+        apartamento = new EditText(EditarUsuarioActivity.this);
+        apartamento.setHint("Apartamento");
+        apartamento.setLayoutParams(nome.getLayoutParams());
+
+        //Recupera dados para editar
+        if(getIntent().getSerializableExtra("usuario") != null) {
+
+            usuario = (Usuario) getIntent().getSerializableExtra("usuario");
+            nome.setText(usuario.getNome());
+            email.setText(usuario.getEmail());
+            cpf.setText(usuario.getCpf());
+            telefone.setText(usuario.getTelefone());
+            dataNascimento.setText(usuario.getDataNascimento());
+
+            if(usuario.getPerfil().equals("Morador")) {
+                apartamento.setText(LerApartamento.exibicaoApartamento(usuario.getBlocoApartamento(), usuario.getNumeroApartamento()));
+            }
+
+            nome.setKeyListener(null);
+            email.setKeyListener(null);
+            cpf.setKeyListener(null);
+            dataNascimento.setKeyListener(null);
+
+            if(usuario.getPerfil().equals("Síndico")) {
+                radioButtonEscolhido = (RadioButton) findViewById(R.id.radioButton_cadastro_usuario_sindico);
+                radioButtonEscolhido.setChecked(true);
+            } else if(usuario.getPerfil().equals("Secretário")) {
+                radioButtonEscolhido = (RadioButton) findViewById(R.id.radioButton_cadastro_usuario_secretario);
+                radioButtonEscolhido.setChecked(true);
+            } else if (usuario.getPerfil().equals("Morador")) {
+                radioButtonEscolhido = (RadioButton) findViewById(R.id.radioButton_cadastro_usuario_morador);
+                radioButtonEscolhido.setChecked(true);
+                layout.addView(apartamento, 7);
+            }
+
+        }
+
         //Mascaras
         telefone.addTextChangedListener(Mask.maskTelefone(telefone));
         dataNascimento.addTextChangedListener(Mask.maskData(dataNascimento));
         cpf.addTextChangedListener(Mask.maskCpf(cpf));
-
-        //Criar EditText para apartamento
-        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout_linear_cadastro_usuario);
-        apartamento = new EditText(CadastroUsuarioActivity.this);
-        apartamento.setHint("Apartamento");
-        apartamento.setLayoutParams(nome.getLayoutParams());
 
         //Capturando RadioButton
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -112,38 +140,44 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 if(!nome.getText().toString().isEmpty() && !email.getText().toString().isEmpty() &&  !cpf.getText().toString().isEmpty()
                         && !telefone.getText().toString().isEmpty() && !dataNascimento.getText().toString().isEmpty() && !radioButtonEscolhido.getText().toString().isEmpty()) {
 
-                    usuario = new Usuario();
                     usuario.setNome(nome.getText().toString());
                     usuario.setEmail(email.getText().toString());
                     usuario.setCpf(cpf.getText().toString());
                     usuario.setTelefone(telefone.getText().toString());
                     usuario.setDataNascimento(dataNascimento.getText().toString());
                     usuario.setPerfil(radioButtonEscolhido.getText().toString());
-                    if(radioButtonEscolhido.getText().equals("Morador") && !apartamento.getText().toString().isEmpty()) {
+                    if(!radioButtonEscolhido.getText().equals("Morador")) {
+                        usuario.setIdApartamento(null);
+                        usuario.setBlocoApartamento(null);
+                        usuario.setNumeroApartamento(null);
+                    } else if(radioButtonEscolhido.getText().equals("Morador") && !apartamento.getText().toString().isEmpty()) {
                         usuario.setIdApartamento(idApartamento);
                         usuario.setNumeroApartamento(numeroApartamento);
                         usuario.setBlocoApartamento(blocoApartamento);
                     } else {
-                        Toast.makeText(CadastroUsuarioActivity.this, "Preencha o campo apartamento.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditarUsuarioActivity.this, "Preencha o campo apartamento.", Toast.LENGTH_SHORT).show();
                     }
 
-                    //Recupera o ID do condominio
-                    Preferencia preferencia = new Preferencia(CadastroUsuarioActivity.this);
-                    usuario.setIdCondominio(preferencia.getIdCondominio());
-                    usuario.setNomeCondominio(preferencia.getNomeCondominio());
+                    //Recupera informações para salvar
+                    Preferencia preferencia = new Preferencia(EditarUsuarioActivity.this);
                     String idUsuario = preferencia.getId();
                     usuario.setIdUsuario(idUsuario);
-                    usuario.setDataInsercao(DateValidator.obterDataAtual());
+                    usuario.setDataAlteracao(DateValidator.obterDataAtual());
 
                     //Verificação de datas
                     if(!DateValidator.validacaoData(usuario.getDataNascimento())) {
-                        Toast.makeText(CadastroUsuarioActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditarUsuarioActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
                     } else {
-                        cadastrarUsuario();
+                        Boolean retornoEdicao = editarUsuario();
+                        if(retornoEdicao) {
+                            Toast.makeText(EditarUsuarioActivity.this, "Edição realizada com sucesso!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(EditarUsuarioActivity.this, "Problema ao realizar edição, tente novamente!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-                else{
-                    Toast.makeText(CadastroUsuarioActivity.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(EditarUsuarioActivity.this, "Preencha todos os campos.", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -152,7 +186,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     }
 
     private void escolherApartamento() {
-        Intent intent = new Intent(CadastroUsuarioActivity.this, ListaApartamentoActivity.class);
+        Intent intent = new Intent(EditarUsuarioActivity.this, ListaApartamentoActivity.class);
         intent.putExtra("tipoCadastro", "Cadastro de Usuário");
         startActivityForResult(intent, 1);
     }
@@ -171,38 +205,15 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         }
     }
 
-    private void cadastrarUsuario() {
-        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), "123456").addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usuario", Toast.LENGTH_SHORT).show();
-
-                    String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
-                    usuario.setId(idUsuario);
-                    usuario.salvar();
-
-                    finish();
-                } else {
-                    String erroExcecao = "";
-
-                    try {
-                        throw task.getException();
-                    } catch (FirebaseAuthInvalidCredentialsException e) {
-                        erroExcecao = "O e-mail digitado é inválido, digite um novo e-mail!";
-                    } catch (FirebaseAuthUserCollisionException e) {
-                        erroExcecao = "Esse e-mail já está sendo usado!";
-                    } catch (Exception e) {
-                        erroExcecao = "erro ao efetuar o cadastro!";
-                        e.printStackTrace();
-                    }
-
-                    Toast.makeText(CadastroUsuarioActivity.this, "Erro: " +erroExcecao, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
+    private boolean editarUsuario() {
+        try {
+            firebase = ConfiguracaoFirebase.getFirebase().child("usuarios").child(usuario.getId());
+            firebase.setValue(usuario);
+            finish();
+            return true;
+        }catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-
 }

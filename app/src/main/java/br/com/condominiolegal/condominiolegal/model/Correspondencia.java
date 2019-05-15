@@ -21,6 +21,7 @@ public class Correspondencia extends Identificador{
         return id;
     }
 
+    @Exclude
     public void setId(String id) {
         this.id = id;
     }

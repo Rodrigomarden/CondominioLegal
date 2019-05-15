@@ -10,20 +10,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.condominiolegal.condominiolegal.R;
-import br.com.condominiolegal.condominiolegal.helper.LerApartamento;
+import br.com.condominiolegal.condominiolegal.model.Morador;
 
-/**
- * Created by rodri on 10/04/2019.
- */
-public class ApartamentoAdapter extends ArrayAdapter<LerApartamento> {
-
-    private ArrayList<LerApartamento> lerApartamentos;
+public class ListaMoradorAdapter extends ArrayAdapter<Morador> {
+    private ArrayList<Morador> moradores;
     private Context context;
 
-    public ApartamentoAdapter(Context c, ArrayList<LerApartamento> objects) {
+    public ListaMoradorAdapter(Context c, ArrayList<Morador> objects) {
         super(c, 0, objects);
 
-        this.lerApartamentos = objects;
+        this.moradores = objects;
         this.context = c;
     }
 
@@ -31,20 +27,20 @@ public class ApartamentoAdapter extends ArrayAdapter<LerApartamento> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = null;
 
-        if(!lerApartamentos.isEmpty() || lerApartamentos != null) {
+        if(!moradores.isEmpty() || moradores != null) {
             //Inicializar objeto para montagem da view
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
 
             //Monta view a partir do xml
-            view = inflater.inflate(R.layout.adapter_lista_apartamento, parent, false);
+            view = inflater.inflate(R.layout.adapter_lista_morador, parent, false);
 
             //Recupera elemento para exibição
-            TextView blocoApartamento = (TextView) view.findViewById(R.id.tv_lista_apartamento);
+            TextView nome = (TextView) view.findViewById(R.id.tv_nome_adapter_lista_morador);
 
-            blocoApartamento.setText("Bloco " + lerApartamentos.get(position).getBloco() + ", Apto. " + lerApartamentos.get(position).getNumero());
+            nome.setText(moradores.get(position).getNome());
+
         }
 
         return view;
     }
-
 }

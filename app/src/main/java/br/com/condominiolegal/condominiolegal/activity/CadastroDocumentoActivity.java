@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -74,7 +73,7 @@ public class CadastroDocumentoActivity extends AppCompatActivity {
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_documento_salvar);
 
         //Listar Arquivos
-        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.lista_arquivo, R.id.tv_lista_arquivo, listaNomeArquivos);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.adapter_lista_arquivo, R.id.tv_lista_arquivo, listaNomeArquivos);
 
         listaArquivos.setAdapter(adapter);
 

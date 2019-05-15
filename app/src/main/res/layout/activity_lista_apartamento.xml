@@ -17,6 +17,6 @@
         android:layout_below="@+id/tb_lista_apartamento"
         android:divider="@color/cinza"
         android:dividerHeight="1dp"
-        android:layout_gravity="center_horizontal|top"/>
+        android:layout_gravity="center_horizontal|top" />
 
 </RelativeLayout>

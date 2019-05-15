@@ -52,7 +52,7 @@ public class ListaApartamentoActivity extends AppCompatActivity {
 
         //Configurando toolbar
         toolbar = (Toolbar) findViewById(R.id.tb_lista_apartamento);
-        toolbar.setTitle(tipoCadastro);
+        toolbar.setTitle("Escolha o apartamento");
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
@@ -95,33 +95,40 @@ public class ListaApartamentoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent intent = new Intent();
+                intent.putExtra("idApartamento", listaApartamentos.get(i).getId());
+                intent.putExtra("numeroApartamento", listaApartamentos.get(i).getNumero());
+                intent.putExtra("blocoApartamento", listaApartamentos.get(i).getBloco());
+
                 switch (tipoCadastro) {
-                    case "Cadastro de Morador":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroMoradorActivity.class);
+                    case "Cadastro de Usuário":
+                        setResult(RESULT_OK, intent);
+                        finish();
+                        break;
+                    case "Morador":
+                        intent.setClass(ListaApartamentoActivity.this, ListaMoradorActivity.class);
                         break;
                     case "Cadastro de Carro":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroCarroActivity.class);
+                        intent.setClass(ListaApartamentoActivity.this, CadastroCarroActivity.class);
                         break;
                     case "Cadastro de Pessoa de Livre Acesso":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroPessoaLivreAcessoActivity.class);
+                        intent.setClass(ListaApartamentoActivity.this, CadastroPessoaLivreAcessoActivity.class);
                         break;
                     case "Cadastro de Autorização Vaga de Garagem":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroAutorizacaoVagaGaragemActivity.class);
+                        intent.setClass(ListaApartamentoActivity.this, CadastroAutorizacaoVagaGaragemActivity.class);
                         break;
-                    case "Cadastro de Correspondência":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroCorrespondenciaActivity.class);
+                    case "Correspondência":
+                        intent.setClass(ListaApartamentoActivity.this, ListaCorrespondeciaActivity.class);
                         break;
                     case "Cadastro de Reserva":
-                        intent = new Intent(ListaApartamentoActivity.this, CadastroReservaActivity.class);
+                        intent.setClass(ListaApartamentoActivity.this, CadastroReservaActivity.class);
                         break;
                     default:
                         intent = new Intent(ListaApartamentoActivity.this, MainActivity.class);
                 }
 
-                intent.putExtra("idApartamento", listaApartamentos.get(i).getId());
-                intent.putExtra("numeroApartamento", Integer.toString(listaApartamentos.get(i).getNumero()));
-                intent.putExtra("blocoApartamento", listaApartamentos.get(i).getBloco());
-                startActivity(intent);
+                if(!tipoCadastro.equals("Cadastro de Usuário")) {
+                    startActivity(intent);
+                }
 
 
             }

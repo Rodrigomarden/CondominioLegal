@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:id="@+id/tv_tipo_adapter_lista_correspondencia"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:text="Envelope"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:id="@+id/tv_status_adapter_lista_correspondencia"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Iniciada"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"
+        android:id="@+id/tv_data_lista_correspondencia"
+        android:layout_below="@+id/tv_tipo_adapter_lista_correspondencia"
+        android:layout_alignLeft="@+id/tv_tipo_adapter_lista_correspondencia"
+        android:layout_alignStart="@+id/tv_tipo_adapter_lista_correspondencia"
+        android:text="10/05/2019" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_check_lista_correspondencia"
+        android:background="@drawable/ic_check_outline_green"
+        android:layout_marginRight="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_alignTop="@+id/tv_status_adapter_lista_correspondencia"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

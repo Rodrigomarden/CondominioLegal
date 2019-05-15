@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Preferencia preferencias = new Preferencia(LoginActivity.this);
 
                                     if(usuarioRecuperado.getPerfil().equals("Morador")) {
-                                        preferencias.salvarDadosMorador(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio(), usuarioRecuperado.getIdApartamento(), usuarioRecuperado.getNumeroBlocoApartamento());
+                                        preferencias.salvarDadosMorador(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio(), usuarioRecuperado.getIdApartamento(), usuarioRecuperado.getNumeroApartamento(), usuarioRecuperado.getBlocoApartamento());
                                     } else {
                                         preferencias.salvarDados(identificadorUsuarioLogado, usuarioRecuperado.getNome(), usuarioRecuperado.getPerfil(), usuarioRecuperado.getIdCondominio(), usuarioRecuperado.getNomeCondominio());
                                     }

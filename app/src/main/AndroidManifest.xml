@@ -23,10 +23,10 @@
         <activity android:name=".activity.MainActivity" />
         <activity
             android:name=".activity.CadastroUsuarioActivity"
-            android:parentActivityName=".activity.MainActivity">
+            android:parentActivityName=".activity.ListaUsuarioActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+                android:value="br.com.condominiolegal.condominiolegal.activity.ListaUsuarioActivity" />
         </activity>
         <activity android:name=".activity.CadastroApartamentoActivity">
             android:parentActivityName=".activity.MainActivity">
@@ -117,7 +117,32 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-
+        //Listas
+        <activity android:name=".activity.ListaCorrespondeciaActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaUsuarioActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaMoradorActivity" >
+        android:parentActivityName=".activity.MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        //Editar
+        <activity android:name=".activity.EditarUsuarioActivity">
+            android:parentActivityName=".activity.ListaUsuarioActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.ListaUsuarioActivity" />
+        </activity>
     </application>
 
 </manifest>
