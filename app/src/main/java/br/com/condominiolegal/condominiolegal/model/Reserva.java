@@ -2,21 +2,23 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Reserva extends Identificador {
+public class Reserva extends Identificador implements Serializable{
     private String id;
-    private Date data;
-    private Time hora;
+    private String data;
+    private String hora;
     private String idEspaco;
     private String nomeEspaco;
-    private Float valor;
+    private String valor;
     private String idApartamento;
-    private String numeroBlocoApartamento;
+    private String numeroApartamento;
+    private String blocoApartamento;
 
     public Reserva() {
     }
@@ -30,19 +32,19 @@ public class Reserva extends Identificador {
         this.id = id;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -62,11 +64,11 @@ public class Reserva extends Identificador {
         this.nomeEspaco = nomeEspaco;
     }
 
-    public Float getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -78,11 +80,19 @@ public class Reserva extends Identificador {
         this.idApartamento = idApartamento;
     }
 
-    public String getNumeroBlocoApartamento() {
-        return numeroBlocoApartamento;
+    public String getNumeroApartamento() {
+        return numeroApartamento;
     }
 
-    public void setNumeroBlocoApartamento(String numeroBlocoApartamento) {
-        this.numeroBlocoApartamento = numeroBlocoApartamento;
+    public void setNumeroApartamento(String numeroApartamento) {
+        this.numeroApartamento = numeroApartamento;
+    }
+
+    public String getBlocoApartamento() {
+        return blocoApartamento;
+    }
+
+    public void setBlocoApartamento(String blocoApartamento) {
+        this.blocoApartamento = blocoApartamento;
     }
 }

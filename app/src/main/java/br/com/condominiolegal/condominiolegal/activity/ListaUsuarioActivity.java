@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,7 @@ public class ListaUsuarioActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     private ArrayList<Usuario> listaUsuario;
     private AlertDialog.Builder dialogDelete;
+    private TextView inf;
 
     private ValueEventListener valueEventListenerMensagem;
 
@@ -55,6 +57,8 @@ public class ListaUsuarioActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
+
+        inf = (TextView) findViewById(R.id.tv_lista_usuario_inf);
 
         //Recupera dados do usuário
         Preferencia preferencia = new Preferencia(ListaUsuarioActivity.this);
@@ -78,6 +82,12 @@ public class ListaUsuarioActivity extends AppCompatActivity {
                     Usuario usuario = dados.getValue(Usuario.class);
                     usuario.setId(dados.getKey());
                     listaUsuario.add(usuario);
+                }
+
+                if(!listaUsuario.isEmpty()) {
+                    inf.setText("");
+                } else {
+                    inf.setText("Não há itens cadastrados.");
                 }
 
                 adapter.notifyDataSetChanged();

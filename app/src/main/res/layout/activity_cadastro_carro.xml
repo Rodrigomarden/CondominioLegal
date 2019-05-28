@@ -62,6 +62,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:layout_below="@+id/edit_cadastro_carro_nomeDono"
                 android:id="@+id/edit_cadastro_carro_cpf"
                 android:hint="CPF" />

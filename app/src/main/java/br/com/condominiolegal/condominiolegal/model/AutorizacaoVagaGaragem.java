@@ -2,12 +2,13 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class AutorizacaoVagaGaragem extends Identificador {
+public class AutorizacaoVagaGaragem extends Identificador implements Serializable{
     private String id;
     private String placa;
     private String modelo;
@@ -31,7 +32,7 @@ public class AutorizacaoVagaGaragem extends Identificador {
         return placa;
     }
 
-    public void setPlaca(String placaVeiculo) {
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
 

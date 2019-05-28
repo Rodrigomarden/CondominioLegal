@@ -19,10 +19,11 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/layout_linear_cadastro_comunicado">
 
             <EditText
                 android:layout_width="match_parent"
@@ -46,22 +47,22 @@
                     android:maxLength="8000" />
             </android.support.design.widget.TextInputLayout>
 
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/til_cadastro_comunicado_descricao"
+                android:inputType="date"
                 android:id="@+id/edit_cadastro_comunicado_dataFim"
                 android:hint="Data fim" />
 
-            <Button
-                android:layout_width="match_parent"
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Escolher Arquivo"
-                android:id="@+id/bt_cadastro_comunicado_escolherArquivo"
-                android:layout_below="@+id/edit_cadastro_comunicado_dataFim"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Arquivos"
+                android:id="@+id/textViewArquivos"
+                android:layout_marginLeft="15dp" />
 
             <ListView
                 android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                 android:theme="@style/botaoPadrao"
                 android:id="@+id/bt_cadastro_comunicado_salvar"
                 android:layout_below="@+id/lv_comunicado_arquivo" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

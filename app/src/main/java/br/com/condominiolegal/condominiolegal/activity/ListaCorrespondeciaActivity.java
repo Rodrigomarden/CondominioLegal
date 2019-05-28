@@ -39,6 +39,7 @@ public class ListaCorrespondeciaActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayAdapter adapter;
     private ArrayList<Correspondencia> listaCorrespondencias;
+    private TextView inf;
 
     private ValueEventListener valueEventListenerMensagem;
 
@@ -71,6 +72,8 @@ public class ListaCorrespondeciaActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
+
+        inf = (TextView) findViewById(R.id.tv_lista_correspondencia_inf);
 
         //Recupera dados do usuário
         Preferencia preferencia = new Preferencia(ListaCorrespondeciaActivity.this);
@@ -105,6 +108,12 @@ public class ListaCorrespondeciaActivity extends AppCompatActivity {
                     Correspondencia correspondencia = dados.getValue(Correspondencia.class);
                     correspondencia.setId(dados.getKey());
                     listaCorrespondencias.add(correspondencia);
+                }
+
+                if(!listaCorrespondencias.isEmpty()) {
+                    inf.setText("");
+                } else {
+                    inf.setText("Não há itens cadastrados.");
                 }
 
                 adapter.notifyDataSetChanged();
@@ -155,6 +164,18 @@ public class ListaCorrespondeciaActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        query.addValueEventListener(valueEventListenerMensagem);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        query.removeEventListener(valueEventListenerMensagem);
     }
 
     @Override

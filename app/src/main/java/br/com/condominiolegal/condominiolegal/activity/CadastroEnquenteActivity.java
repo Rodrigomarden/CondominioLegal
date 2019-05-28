@@ -85,7 +85,7 @@ public class CadastroEnquenteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText editText = new EditText(CadastroEnquenteActivity.this);
                 editText.setHint("Opção " + (listaEditText.size()+3));
-                editText.setLayoutParams(opcao1.getLayoutParams());
+                editText.setLayoutParams(opcao2.getLayoutParams());
                 listaEditText.add(editText);
                 layout.addView(editText);
             }
@@ -113,11 +113,13 @@ public class CadastroEnquenteActivity extends AppCompatActivity {
                     //Inserir opção 1
                     OpcaoEnquente opcaoEnquente = new OpcaoEnquente();
                     opcaoEnquente.setOpcao(opcao1.getText().toString());
+                    opcaoEnquente.setQntdVotos(0);
                     listaOpcaoEnquentes.add(opcaoEnquente);
 
                     //Inserir opção 2
                     opcaoEnquente = new OpcaoEnquente();
                     opcaoEnquente.setOpcao(opcao2.getText().toString());
+                    opcaoEnquente.setQntdVotos(0);
                     listaOpcaoEnquentes.add(opcaoEnquente);
 
                     //Inserir opções dinamicas
@@ -125,6 +127,7 @@ public class CadastroEnquenteActivity extends AppCompatActivity {
                         if(listaEditText.get(i).getText().toString() != null) {
                             opcaoEnquente = new OpcaoEnquente();
                             opcaoEnquente.setOpcao(listaEditText.get(i).getText().toString());
+                            opcaoEnquente.setQntdVotos(0);
                             listaOpcaoEnquentes.add(opcaoEnquente);
                         }
                     }

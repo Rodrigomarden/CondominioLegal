@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -58,6 +59,9 @@ public class CadastroComunicadoActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
 
     private DatabaseReference firebase;
+
+    private Boolean retornoCadastro = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +80,14 @@ public class CadastroComunicadoActivity extends AppCompatActivity {
         tilDescricao = (TextInputLayout) findViewById(R.id.til_cadastro_comunicado_descricao);
         descricao = (EditText) findViewById(R.id.edit_cadastro_comunicado_descricao);
         dataFim = (EditText) findViewById(R.id.edit_cadastro_comunicado_dataFim);
-        escolherArquivo = (Button) findViewById(R.id.bt_cadastro_comunicado_escolherArquivo);
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_comunicado_salvar);
+
+        //Criar botão escolher arquivo
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout_linear_cadastro_comunicado);
+        escolherArquivo = new Button(CadastroComunicadoActivity.this);
+        escolherArquivo.setText("ESCOLHER ARQUIVO");
+        escolherArquivo.setLayoutParams(botaoSalvar.getLayoutParams());
+        layout.addView(escolherArquivo, 3);
 
         //Definindo máximo de caracters para 8000 na descrição
         tilDescricao.setCounterEnabled(true);
@@ -198,6 +208,8 @@ public class CadastroComunicadoActivity extends AppCompatActivity {
 
     private boolean cadastrarComunicado() {
         try{
+            retornoCadastro = true;
+
             //Recupera o ID do condominio
             Preferencia preferencia = new Preferencia(CadastroComunicadoActivity.this);
             final String idCondominio = preferencia.getIdCondominio();
@@ -219,12 +231,13 @@ public class CadastroComunicadoActivity extends AppCompatActivity {
                                 UploadTask uploadTask = arquivoRef.putFile(uri);
                                 arquivoRef.getDownloadUrl();
 
-
                                 // Register observers to listen for when the download is done or if it fails
                                 uploadTask.addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception exception) {
-
+                                        firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("comunicados").child(keyComunicado);
+                                        firebase.removeValue();
+                                        retornoCadastro = false;
                                     }
                                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
@@ -244,7 +257,7 @@ public class CadastroComunicadoActivity extends AppCompatActivity {
                     });
 
             finish();
-            return true;
+            return retornoCadastro;
         }catch(Exception e) {
             e.printStackTrace();
             return false;

@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
-                intent.putExtra("tipoCadastro", "Cadastro de Carro");
+                intent.putExtra("tipoCadastro", "Carro");
                 startActivity(intent);
             }
         });
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
-                intent.putExtra("tipoCadastro", "Cadastro de Pessoa de Livre Acesso");
+                intent.putExtra("tipoCadastro", "Pessoa de Livre Acesso");
                 startActivity(intent);
             }
         });
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListaApartamentoActivity.class);
-                intent.putExtra("tipoCadastro", "Cadastro de Autorização Vaga de Garagem");
+                intent.putExtra("tipoCadastro", "Autorização Vaga de Garagem");
                 startActivity(intent);
             }
         });
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarComunicado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CadastroComunicadoActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListaComunicadoActivity.class);
                 startActivity(intent);
             }
         });
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarDocumento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CadastroDocumentoActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListaDocumentoActivity.class);
                 startActivity(intent);
             }
         });
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarReclamacaoGeral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CadastroReclamacaoGeralActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListaReclamacaoGeralActivity.class);
                 startActivity(intent);
             }
         });
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         botaoCadastrarEspaco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CadastroEspacoActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListaEspacoActivity.class);
                 startActivity(intent);
             }
         });

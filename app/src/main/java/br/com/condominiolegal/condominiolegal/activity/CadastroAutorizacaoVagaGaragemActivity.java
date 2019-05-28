@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 import br.com.condominiolegal.condominiolegal.helper.DateValidator;
+import br.com.condominiolegal.condominiolegal.helper.LerApartamento;
 import br.com.condominiolegal.condominiolegal.helper.Mask;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.AutorizacaoVagaGaragem;
@@ -72,7 +73,7 @@ public class CadastroAutorizacaoVagaGaragemActivity extends AppCompatActivity {
         dataLimiteAcesso.addTextChangedListener(Mask.maskData(dataLimiteAcesso));
 
         //Seta o número e o bloco do apartamento na tela
-        blocoNumeroApartamento.setText("Bloco: " + blocoApartamento + " Apto: " + numeroApartamento);
+        blocoNumeroApartamento.setText(LerApartamento.exibicaoApartamento(blocoApartamento, numeroApartamento));
 
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
             @Override

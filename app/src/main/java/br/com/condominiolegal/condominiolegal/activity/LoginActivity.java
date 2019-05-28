@@ -1,5 +1,6 @@
 package br.com.condominiolegal.condominiolegal.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import br.com.condominiolegal.condominiolegal.R;
 import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
 import br.com.condominiolegal.condominiolegal.helper.Base64Custom;
+import br.com.condominiolegal.condominiolegal.helper.Permissao;
 import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Usuario;
 
@@ -37,10 +39,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private String identificadorUsuarioLogado;
 
+    private String[] permissoesNecessarias = new String[] {
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.MANAGE_DOCUMENTS
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Permissao.validaPermissoes(1, this, permissoesNecessarias);
 
         verificarUsuarioLogado();
 

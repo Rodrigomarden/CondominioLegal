@@ -2,10 +2,12 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Espaco extends Identificador {
+public class Espaco extends Identificador implements Serializable{
     private String id;
     private String nome;
     private Float valor;

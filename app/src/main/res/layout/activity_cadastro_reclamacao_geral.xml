@@ -19,9 +19,11 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_linear_cadastro_reclamacao_geral">
 
             <EditText
                 android:layout_width="match_parent"
@@ -46,15 +48,6 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Escolher Arquivo"
-                android:id="@+id/bt_cadastro_reclamacao_geral_escolherArquivo"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/til_cadastro_reclamacao_geral_descricao" />
-
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="85dp"
@@ -70,7 +63,7 @@
                 android:theme="@style/botaoPadrao"
                 android:id="@+id/bt_cadastro_reclamacao_geral_salvar"
                 android:layout_below="@+id/lv_reclamacao_geral_arquivo" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
     
 </RelativeLayout>

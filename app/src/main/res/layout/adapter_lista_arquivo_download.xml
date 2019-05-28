@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="290dp"
+        android:layout_height="30dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Arquivo"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_lista_arquivo_download" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:background="@drawable/ic_file_download"
+        android:layout_marginRight="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_alignTop="@+id/tv_lista_arquivo_download"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

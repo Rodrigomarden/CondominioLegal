@@ -32,6 +32,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="date"
                 android:id="@+id/edit_cadastro_enquente_data_encerramento"
                 android:layout_below="@+id/edit_cadastro_enquente_titulo"
                 android:hint="Data de encerramento" />

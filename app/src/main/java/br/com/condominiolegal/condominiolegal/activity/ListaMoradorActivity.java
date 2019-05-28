@@ -39,6 +39,7 @@ public class ListaMoradorActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayAdapter adapter;
     private ArrayList<Morador> listaMoradores;
+    private TextView inf;
 
     private ValueEventListener valueEventListenerMensagem;
 
@@ -71,6 +72,8 @@ public class ListaMoradorActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
+
+        inf = (TextView) findViewById(R.id.tv_lista_morador_inf);
 
         //Recupera dados do usuário
         Preferencia preferencia = new Preferencia(ListaMoradorActivity.this);
@@ -107,6 +110,12 @@ public class ListaMoradorActivity extends AppCompatActivity {
                     listaMoradores.add(morador);
                 }
 
+                if(!listaMoradores.isEmpty()) {
+                    inf.setText("");
+                } else {
+                    inf.setText("Não há itens cadastrados.");
+                }
+
                 adapter.notifyDataSetChanged();
             }
 
@@ -125,6 +134,9 @@ public class ListaMoradorActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ListaMoradorActivity.this, EditarMoradorActivity.class);
                 intent.putExtra("morador", listaMoradores.get(i));
+                intent.putExtra("idApartamento", idApartamento);
+                intent.putExtra("numeroApartamento", numeroApartamento);
+                intent.putExtra("blocoApartamento", blocoApartamento);
                 startActivity(intent);
 
             }
@@ -156,7 +168,7 @@ public class ListaMoradorActivity extends AppCompatActivity {
                 dialogDelete.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("moreadores").child(listaMoradores.get(position).getId());
+                        firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("moradores").child(listaMoradores.get(position).getId());
                         firebase.removeValue();
                     }
                 });
@@ -168,6 +180,17 @@ public class ListaMoradorActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        query.addValueEventListener(valueEventListenerMensagem);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        query.removeEventListener(valueEventListenerMensagem);
+    }
 
     @Override
     protected void onStop() {

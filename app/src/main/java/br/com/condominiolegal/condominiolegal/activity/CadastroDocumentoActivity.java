@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ import br.com.condominiolegal.condominiolegal.helper.Preferencia;
 import br.com.condominiolegal.condominiolegal.model.Anexo;
 import br.com.condominiolegal.condominiolegal.model.Documento;
 
-public class CadastroDocumentoActivity extends AppCompatActivity {
+public class    CadastroDocumentoActivity extends AppCompatActivity {
 
     public Toolbar toolbar;
 
@@ -69,8 +70,14 @@ public class CadastroDocumentoActivity extends AppCompatActivity {
         //Recuperar IDs da tela
         listaArquivos = (ListView) findViewById(R.id.lv_documento_arquivo);
         titulo = (EditText) findViewById(R.id.edit_cadastro_documento_titulo);
-        escolherArquivo = (Button) findViewById(R.id.bt_cadastro_documento_escolherArquivo);
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_documento_salvar);
+
+        //Criar botão escolher arquivo
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout_linear_cadastro_documento);
+        escolherArquivo = new Button(CadastroDocumentoActivity.this);
+        escolherArquivo.setText("ESCOLHER ARQUIVO");
+        escolherArquivo.setLayoutParams(botaoSalvar.getLayoutParams());
+        layout.addView(escolherArquivo, 1);
 
         //Listar Arquivos
         adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.adapter_lista_arquivo, R.id.tv_lista_arquivo, listaNomeArquivos);

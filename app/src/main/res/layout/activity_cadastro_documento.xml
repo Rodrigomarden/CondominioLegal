@@ -19,9 +19,11 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_linear_cadastro_documento">
 
 
             <EditText
@@ -29,15 +31,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_cadastro_documento_titulo"
                 android:hint="Título" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Escolher Arquivo"
-                android:id="@+id/bt_cadastro_documento_escolherArquivo"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/edit_cadastro_documento_titulo" />
 
             <ListView
                 android:layout_width="match_parent"
@@ -54,7 +47,7 @@
                 android:theme="@style/botaoPadrao"
                 android:id="@+id/bt_cadastro_documento_salvar"
                 android:layout_below="@+id/lv_documento_arquivo" />
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
     
 </RelativeLayout>

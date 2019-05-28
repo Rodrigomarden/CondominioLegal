@@ -15,7 +15,7 @@ import br.com.condominiolegal.condominiolegal.config.ConfiguracaoFirebase;
  */
 public class LerApartamento {
     private String id;
-    private String numero;
+    private int numero;
     private String bloco;
 
     public LerApartamento() {
@@ -29,11 +29,11 @@ public class LerApartamento {
         this.id = id;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 

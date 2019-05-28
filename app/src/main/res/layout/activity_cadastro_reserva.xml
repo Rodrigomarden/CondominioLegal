@@ -43,7 +43,7 @@
                 android:paddingTop="10dp" />
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner_cadastro_reserva_espaco"
                 android:layout_toRightOf="@+id/textView_cadastro_reserva_espaco"
@@ -69,6 +69,15 @@
                 android:id="@+id/edit_cadastro_reserva_data"
                 android:layout_below="@+id/tv_cadastro_reserva_valor"
                 android:hint="Data da reserva"
+                android:paddingTop="10dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_cadastro_reserva_horario"
+                android:layout_toRightOf="@+id/textView_cadastro_reserva_espaco"
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/edit_cadastro_reserva_data"
                 android:paddingTop="10dp" />
 
             <Button

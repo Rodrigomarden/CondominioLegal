@@ -70,6 +70,10 @@ public class ListaCorrespondenciaAdapter extends ArrayAdapter<Correspondencia> {
                 tipo.setText(correspondencias.get(position).getTipo());
                 status.setText(correspondencias.get(position).getStatus());
 
+                if(correspondencias.get(position).getStatus().equals("Entregue")) {
+                    check.setVisibility(View.INVISIBLE);
+                }
+
                 check.setTag(position); //registra tag
 
                 check.setOnClickListener(new View.OnClickListener() {

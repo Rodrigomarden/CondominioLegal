@@ -49,7 +49,7 @@ public class EditarMoradorActivity extends AppCompatActivity {
 
         //Configurando toolbar
         toolbar = (Toolbar) findViewById(R.id.tb_cadastro_morador);
-        toolbar.setTitle("Cadastro de Morador");
+        toolbar.setTitle("Editar Morador");
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
@@ -64,13 +64,24 @@ public class EditarMoradorActivity extends AppCompatActivity {
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_morador_salvar);
 
         //Recupera dados para editar
-        if(getIntent().getSerializableExtra("usuario") != null) {
+        if(getIntent().getSerializableExtra("morador") != null) {
             morador = (Morador) getIntent().getSerializableExtra("morador");
             nome.setText(morador.getNome());
             cpf.setText(morador.getCpf());
             dataNascimento.setText(morador.getDataNascimento());
             telefone.setText(morador.getTelefone());
-            //blocoNumeroApartamento.setText(LerApartamento.exibicaoApartamento(morador.get));
+            if(morador.getSexo().equals("Masculino")) {
+                sexo.setSelection(0);
+            } else {
+                sexo.setSelection(1);
+            }
+            //Recuperar os dados do Apartamento para conversa pela intent
+            Bundle extra = getIntent().getExtras();
+            if(extra != null) {
+                idApartamento = extra.getString("idApartamento");
+                numeroApartamento = extra.getString("numeroApartamento");
+                blocoApartamento = extra.getString("blocoApartamento");
+            }
         }
 
         //Mascaras
@@ -79,7 +90,7 @@ public class EditarMoradorActivity extends AppCompatActivity {
         cpf.addTextChangedListener(Mask.maskCpf(cpf));
 
         //Seta o número e o bloco do apartamento na tela
-        blocoNumeroApartamento.setText("Bloco: " + blocoApartamento + " Apto: " + numeroApartamento);
+        blocoNumeroApartamento.setText(LerApartamento.exibicaoApartamento(blocoApartamento, numeroApartamento));
 
         //Configurando Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sexo_array, android.R.layout.simple_spinner_item);
@@ -90,7 +101,6 @@ public class EditarMoradorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!nome.getText().toString().isEmpty() && !cpf.getText().toString().isEmpty() && !dataNascimento.getText().toString().isEmpty() && !telefone.getText().toString().isEmpty()) {
-                    morador = new Morador();
                     morador.setNome(nome.getText().toString());
                     morador.setCpf(cpf.getText().toString());
                     morador.setDataNascimento(dataNascimento.getText().toString());
@@ -101,11 +111,11 @@ public class EditarMoradorActivity extends AppCompatActivity {
                     if(!DateValidator.validacaoData(morador.getDataNascimento())) {
                         Toast.makeText(EditarMoradorActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Boolean retornoCadastro = cadastrarMorador();
+                        Boolean retornoCadastro = editarMorador();
                         if (retornoCadastro) {
-                            Toast.makeText(EditarMoradorActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarMoradorActivity.this, "Edição realizada com sucesso!", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(EditarMoradorActivity.this, "Problema ao realizar cadastro, tente novamente!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditarMoradorActivity.this, "Problema ao realizar edição, tente novamente!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -116,18 +126,17 @@ public class EditarMoradorActivity extends AppCompatActivity {
 
     }
 
-    private boolean cadastrarMorador() {
+    private boolean editarMorador() {
         try{
             //Recupera o ID do condominio
             Preferencia preferencia = new Preferencia(EditarMoradorActivity.this);
             String idCondominio = preferencia.getIdCondominio();
             String idUsuario = preferencia.getId();
             morador.setIdUsuario(idUsuario);
-            morador.setDataInsercao(DateValidator.obterDataAtual());
+            morador.setDataAlteracao(DateValidator.obterDataAtual());
 
-            firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("moradores");
-            firebase.push()
-                    .setValue(morador);
+            firebase = ConfiguracaoFirebase.getFirebase().child("condominios").child(idCondominio).child("apartamentos").child(idApartamento).child("moradores").child(morador.getId());
+            firebase.setValue(morador);
 
             finish();
             return true;

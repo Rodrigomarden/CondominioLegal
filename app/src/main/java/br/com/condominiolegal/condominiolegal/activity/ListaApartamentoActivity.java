@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,6 +35,7 @@ public class ListaApartamentoActivity extends AppCompatActivity {
     private ListView listView;
     private ArrayAdapter adapter;
     private ArrayList<LerApartamento> listaApartamentos;
+    private TextView inf;
 
     private DatabaseReference firebase;
 
@@ -56,6 +58,8 @@ public class ListaApartamentoActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
+
+        inf = (TextView) findViewById(R.id.tv_lista_apartamento_inf);
 
         listaApartamentos = new ArrayList<>();
 
@@ -81,6 +85,12 @@ public class ListaApartamentoActivity extends AppCompatActivity {
                     listaApartamentos.add(apartamento);
                 }
 
+                if(!listaApartamentos.isEmpty()) {
+                    inf.setText("");
+                } else {
+                    inf.setText("Não há itens cadastrados.");
+                }
+
                 adapter.notifyDataSetChanged();
             }
 
@@ -96,7 +106,7 @@ public class ListaApartamentoActivity extends AppCompatActivity {
 
                 Intent intent = new Intent();
                 intent.putExtra("idApartamento", listaApartamentos.get(i).getId());
-                intent.putExtra("numeroApartamento", listaApartamentos.get(i).getNumero());
+                intent.putExtra("numeroApartamento", Integer.toString(listaApartamentos.get(i).getNumero()));
                 intent.putExtra("blocoApartamento", listaApartamentos.get(i).getBloco());
 
                 switch (tipoCadastro) {
@@ -107,14 +117,14 @@ public class ListaApartamentoActivity extends AppCompatActivity {
                     case "Morador":
                         intent.setClass(ListaApartamentoActivity.this, ListaMoradorActivity.class);
                         break;
-                    case "Cadastro de Carro":
-                        intent.setClass(ListaApartamentoActivity.this, CadastroCarroActivity.class);
+                    case "Carro":
+                        intent.setClass(ListaApartamentoActivity.this, ListaCarroActivity.class);
                         break;
-                    case "Cadastro de Pessoa de Livre Acesso":
-                        intent.setClass(ListaApartamentoActivity.this, CadastroPessoaLivreAcessoActivity.class);
+                    case "Pessoa de Livre Acesso":
+                        intent.setClass(ListaApartamentoActivity.this, ListaPessoaLivreAcessoActivity.class);
                         break;
-                    case "Cadastro de Autorização Vaga de Garagem":
-                        intent.setClass(ListaApartamentoActivity.this, CadastroAutorizacaoVagaGaragemActivity.class);
+                    case "Autorização Vaga de Garagem":
+                        intent.setClass(ListaApartamentoActivity.this, ListaAutorizacaoVagaGaragemActivity.class);
                         break;
                     case "Correspondência":
                         intent.setClass(ListaApartamentoActivity.this, ListaCorrespondeciaActivity.class);

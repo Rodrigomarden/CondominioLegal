@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
 
@@ -117,7 +118,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        //Listas
+        <!-- Listas -->
         <activity android:name=".activity.ListaCorrespondeciaActivity">
             android:parentActivityName=".activity.MainActivity">
             <meta-data
@@ -130,19 +131,111 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.ListaMoradorActivity" >
-        android:parentActivityName=".activity.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
-        </activity>
-        //Editar
-        <activity android:name=".activity.EditarUsuarioActivity">
-            android:parentActivityName=".activity.ListaUsuarioActivity">
+        <activity android:name=".activity.ListaMoradorActivity">
+            android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.condominiolegal.condominiolegal.activity.ListaUsuarioActivity" />
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.ListaCarroActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaPessoaLivreAcessoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaAutorizacaoVagaGaragemActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaComunicadoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaDocumentoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaReclamacaoGeralActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaEspacoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+
+        <!-- Editar -->
+        <activity android:name=".activity.EditarUsuarioActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarMoradorActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarCarroActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarPessoaLivreAcessoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarAutorizacaoVagaGaragemActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarComunicadoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarDocumentoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarReclamacaoGeralActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.EditarEspacoActivity">
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.condominiolegal.condominiolegal.activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.ListaReservaActivity"></activity>
     </application>
 
 </manifest>

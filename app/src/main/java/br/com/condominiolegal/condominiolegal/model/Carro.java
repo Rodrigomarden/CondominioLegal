@@ -2,10 +2,12 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
+
 /**
  * Created by rodri on 02/04/2019.
  */
-public class Carro extends Identificador {
+public class Carro extends Identificador implements Serializable {
     private String id;
     private String placa;
     private String modelo;

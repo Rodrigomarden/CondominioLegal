@@ -44,6 +44,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:id="@+id/edit_cadastro_usuario_cpf"
                 android:layout_below="@+id/edit_cadastro_usuario_email"
                 android:hint="CPF" />

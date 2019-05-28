@@ -2,12 +2,13 @@ package br.com.condominiolegal.condominiolegal.model;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by rodri on 02/04/2019.
  */
-public class PessoasLivreAcesso extends Identificador {
+public class PessoasLivreAcesso extends Identificador implements Serializable{
     private String id;
     private String nome;
     private String dataNascimento;

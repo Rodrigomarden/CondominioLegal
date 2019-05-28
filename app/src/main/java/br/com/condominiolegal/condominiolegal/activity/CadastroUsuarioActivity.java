@@ -119,13 +119,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuario.setTelefone(telefone.getText().toString());
                     usuario.setDataNascimento(dataNascimento.getText().toString());
                     usuario.setPerfil(radioButtonEscolhido.getText().toString());
-                    if(radioButtonEscolhido.getText().equals("Morador") && !apartamento.getText().toString().isEmpty()) {
-                        usuario.setIdApartamento(idApartamento);
-                        usuario.setNumeroApartamento(numeroApartamento);
-                        usuario.setBlocoApartamento(blocoApartamento);
-                    } else {
-                        Toast.makeText(CadastroUsuarioActivity.this, "Preencha o campo apartamento.", Toast.LENGTH_SHORT).show();
-                    }
+
 
                     //Recupera o ID do condominio
                     Preferencia preferencia = new Preferencia(CadastroUsuarioActivity.this);
@@ -139,7 +133,18 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     if(!DateValidator.validacaoData(usuario.getDataNascimento())) {
                         Toast.makeText(CadastroUsuarioActivity.this, "Digite uma data válida!", Toast.LENGTH_SHORT).show();
                     } else {
-                        cadastrarUsuario();
+                        if(radioButtonEscolhido.getText().equals("Morador")) {
+                            if (!apartamento.getText().toString().isEmpty()) {
+                                usuario.setIdApartamento(idApartamento);
+                                usuario.setNumeroApartamento(numeroApartamento);
+                                usuario.setBlocoApartamento(blocoApartamento);
+                                cadastrarUsuario();
+                            } else {
+                                Toast.makeText(CadastroUsuarioActivity.this, "Preencha o campo apartamento.", Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            cadastrarUsuario();
+                        }
                     }
                 }
                 else{

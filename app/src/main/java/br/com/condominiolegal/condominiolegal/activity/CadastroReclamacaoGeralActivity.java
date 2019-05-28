@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -74,8 +75,14 @@ public class CadastroReclamacaoGeralActivity extends AppCompatActivity {
         titulo = (EditText) findViewById(R.id.edit_cadastro_reclamacao_geral_titulo);
         tilDescricao = (TextInputLayout) findViewById(R.id.til_cadastro_reclamacao_geral_descricao);
         descricao = (EditText) findViewById(R.id.edit_cadastro_reclamacao_geral_descricao);
-        escolherArquivo = (Button) findViewById(R.id.bt_cadastro_reclamacao_geral_escolherArquivo);
         botaoSalvar = (Button) findViewById(R.id.bt_cadastro_reclamacao_geral_salvar);
+
+        //Criar botão escolher arquivo
+        final LinearLayout layout = (LinearLayout) findViewById(R.id.layout_linear_cadastro_reclamacao_geral);
+        escolherArquivo = new Button(CadastroReclamacaoGeralActivity.this);
+        escolherArquivo.setText("ESCOLHER ARQUIVO");
+        escolherArquivo.setLayoutParams(botaoSalvar.getLayoutParams());
+        layout.addView(escolherArquivo, 2);
 
         //Definindo máximo de caracters para 1000 na descrição
         tilDescricao.setCounterEnabled(true);
